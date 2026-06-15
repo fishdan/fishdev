@@ -2,7 +2,7 @@
 
 Version: 1.0
 
-This constitution defines the engineering principles governing all FishDev-managed repositories.
+This constitution defines the engineering principles governing all repositories set up with the FishDev CLI tool.
 
 This constitution is authoritative once adopted by a repository.
 

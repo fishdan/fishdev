@@ -123,17 +123,27 @@ The assistant should attempt the project's documented validation command.
 Examples:
 
 ```bash
-speckit --help
-speckit --version
+specify --help
+specify --version
 ```
 
 or any project-specific validation command.
 
-If SpecKit cannot be validated:
+If SpecKit cannot be validated, install it using the recommended method:
+
+```bash
+# Install uv if missing
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Install specify-cli
+uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+```
+
+If installation fails:
 
 1. Stop.
 2. Inform the human.
-3. Ask whether SpecKit should be installed or repaired.
+3. Ask for assistance.
 4. Do not continue with feature implementation.
 
 ---
