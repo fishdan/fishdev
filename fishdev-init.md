@@ -214,6 +214,8 @@ Once found:
 
 Read and honor the constitution before reviewing tasks.
 
+If the default constitution is chosen, it must also be copied to `.specify/memory/constitution.md` to ensure SpecKit context includes it as the last step of the init process.
+
 ---
 
 # SpecKit First Development
@@ -445,5 +447,7 @@ Handoff:
 Recommended Next Task:
 <task identifier and description>
 ```
+
+After this init is finished with setup, it should append to start.ai any instructions in this file that should be executed at the beginning of a session.  We don't want fishdev-init.md to be used for anything OTHER than getting the repo configured correctly.  It's kind of like a "post install" script for a new repo that ensures that the AI's working environment is set up correctly.  So make sure that start.ai is stand alone and sufficient.  Every engineer will be trained to run start.ai at the beginning of every session AND NOTHING ELSE, so start.ai must contain all instructions that will be needed for the AI to function correctly.  Fishdev-init.md should NOT be used for anything other than getting the repo configured correctly.  It should NOT be edited by anyone unless it's to fix an issue with the init process itself.
 
 Wait for human direction unless a specific task was already assigned.
