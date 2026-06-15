@@ -58,5 +58,4 @@ echo ""
 echo "✅ FishDev Bootstrap complete!"
 echo ""
 echo "Next Steps:"
-echo "1. git add ."
-echo "2. Use /speckit.specify (or your agent's equivalent) to create your baseline specification."
+echo "tell your ai assistant to follow the instructions in ./start.ai and start all future sessions with that command.
