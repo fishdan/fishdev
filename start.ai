@@ -21,6 +21,9 @@ This document defines the standard AI-assisted development workflow for this rep
 This workflow is intentionally AI-agnostic.
 AI assistants must treat `.config/ai/` as the authoritative AI workflow location.
 Do not create or depend on vendor-specific directories unless explicitly instructed by a human.
+If agents or skills are added they MUST be done in an AI agnostic way, with pointers in this file that will for for ANY AI.
+It is never ok to have a .claude, .codex, .gemini r any other vendor specific files in this repository EXCEPT to have 
+such files point to the agnostic files in .config/ai/. 
 
 ---
 
@@ -35,9 +38,21 @@ At the start of every session, you must complete the following steps before begi
 5. Determine the current git branch (`git branch --show-current`, `git status --short`).
 6. Validate SpecKit (`specify --version` or `specify --help`). If it fails, ask the human for assistance.
 7. Determine the technology stack.
-8. Verify constitution availability (read and honor `.config/ai/defaults/constitution.md` and `.specify/memory/constitution.md`).
+8. Verify constitution availability (read and honor `.specify/memory/constitution.md`).
 9. Review active specifications (e.g., `spec.md`, `plan.md`, `tasks.md`).
 10. Recommend next work.
+
+MONTHLY SECURITY AUDIT
+
+At the start of every session, check `progress.ai` for the most recent entry mentioning a monthly vulnerability audit, CVE remediation, or dependency vulnerability scan.
+
+If no such entry exists in the last 30 days, run a monthly vulnerability audit based on the technology stack:  examples below
+- Backend/Java: run the Java CVE validation workflow and use an NVD API key  when invoking OWASP dependency-check or equivalent tooling.
+- Frontend/Node: run `npm audit` in `frontend/`.
+
+Fix any critical or high-severity vulnerabilities that can be remediated safely in the current session.
+
+Record the date, findings, fixes, commands run, and validation results in `progress.ai`.
 
 Do not begin feature implementation until this sequence completes and you output the **Session Startup Response**.
 
