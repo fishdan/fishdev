@@ -13,7 +13,7 @@ mkdir -p .config/ai/defaults
 echo "Downloading core workflow files..."
 curl -fsSL "$REPO_RAW_URL/start.ai" -o start.ai
 curl -fsSL "$REPO_RAW_URL/fishdev-init.md" -o fishdev-init.md
-curl -fsSL "$REPO_RAW_URL/default-constitution.md" -o .config/ai/defaults/constitution.md
+curl -fsSL "$REPO_RAW_URL/.config/ai/defaults/constitution.md" -o .config/ai/defaults/constitution.md
 
 # 3. Create pointer files and state files
 echo "Setting up agent pointers and state files..."
