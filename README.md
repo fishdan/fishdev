@@ -5,6 +5,8 @@
 curl -fsSL https://raw.githubusercontent.com/fishdan/fishdev/main/install.sh | bash
 ```
 
+On Windows, follow the [VS Code and PowerShell setup guide](docs/windows-vscode-powershell.md).
+
 ## What is FishDev?
 
 FishDev is a standardized, constitution-driven workflow for AI-assisted software development. It relies on [SpecKit](https://github.com/github/spec-kit) and a strict set of engineering principles to ensure that AI coding assistants behave predictably, maintain project history, and produce clean, testable code. 

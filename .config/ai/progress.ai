@@ -1,5 +1,11 @@
 # Progress Log
 
+## 2026-10-13 — Windows setup guide (0.003/T001–T003)
+
+- Added `docs/windows-vscode-powershell.md` and linked it from the README. The guide installs uv, Python 3.11, and SpecKit; initializes PowerShell scripts with SpecKit's generic integration under `.config/ai/commands`; and creates FishDev's workflow, pointer, and state files without running Bash.
+- Verified command choices against official VS Code, uv, and SpecKit documentation and local `specify init --help` / `uv tool install --help` output. A temporary `specify init . --here --force --non-interactive --ignore-agent-tools --script ps --integration generic --integration-options="--commands-dir .config/ai/commands"` run succeeded and produced `.specify/scripts/powershell/` and `.config/ai/commands/` files.
+- `git diff --check` passed. Native Windows execution was unavailable because `pwsh` is not installed in this Linux validation environment; the guide states this limit.
+
 ## 2026-10-13 — Installer syntax fix (0.002/T001–T003)
 
 - Closed the final quoted `echo` string in `install.sh`, resolving the parse error found during the monthly audit without changing installer steps.
