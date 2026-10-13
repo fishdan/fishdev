@@ -1,1 +1,13 @@
 # Progress Log
+
+## 2026-10-13 — Installer syntax fix (0.002/T001–T003)
+
+- Closed the final quoted `echo` string in `install.sh`, resolving the parse error found during the monthly audit without changing installer steps.
+- Validation: `bash -n install.sh` passed; `tail -n 5 install.sh | bash` printed the intended final message; `git diff --check` passed. The full installer was not run because it downloads and installs external tooling.
+
+## 2026-10-13 — Monthly vulnerability audit (T001–T003)
+
+- Stack: Bash installer, Markdown workflow documents, and SpecKit templates/scripts. No application package or lockfile was found; the two `.specify/integrations/*.manifest.json` files are integration file inventories, not dependency manifests.
+- Commands: `git ls-files '*lock*' '*manifest*' 'package.json' 'pom.xml' 'build.gradle*' 'requirements*.txt' 'pyproject.toml' 'Cargo.toml' 'go.mod'`; `rg -n 'curl|wget|uv tool|pip install|npm install|apt |git\\+' install.sh README.md fishdev-init.md .specify/scripts/bash .specify/integration.json`; `bash -n install.sh`.
+- Dependency vulnerability result: no versioned application dependencies to scan and no identified critical or high severity CVEs to remediate. The installer downloads shell code and SpecKit from mutable remote locations; pinning and integrity verification should be evaluated in a scoped security task.
+- Validation: `bash -n install.sh` failed with `line 61: unexpected EOF while looking for matching '"'`. This installer syntax defect is a recommended next task; no installer behavior was changed during this audit.

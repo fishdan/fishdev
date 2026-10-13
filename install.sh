@@ -58,4 +58,4 @@ echo ""
 echo "✅ FishDev Bootstrap complete!"
 echo ""
 echo "Next Steps:"
-echo "tell your ai assistant to follow the instructions in ./start.ai and start all future sessions with that command.
+echo "tell your ai assistant to follow the instructions in ./start.ai and start all future sessions with that command."
