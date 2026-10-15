@@ -1,5 +1,8 @@
 # Set up FishDev on Windows in VS Code
 
+> **Note:** This guide has not yet been tested on native Windows. Commands were checked against official documentation and the SpecKit CLI on Linux only. Please report any problems.
+
+
 These steps use the **PowerShell terminal in VS Code**. WSL and Git Bash are not required. Use a project folder that has not already been initialized with FishDev or SpecKit; the commands below add workflow files to that folder.
 
 ## 1. Prepare the project
