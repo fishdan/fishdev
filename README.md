@@ -13,6 +13,8 @@ FishDev is a standardized, constitution-driven workflow for AI-assisted software
 
 When initialized, FishDev scaffolds an authoritative `.config/ai/` directory that stores your project's state, handoff notes, progress logs, and your engineering constitution. This enforces "Spec-First Development," meaning no code is written without a clear specification, keeping your project organized and fully transparent.
 
+FishDev also provides a [project verification and learning workflow](docs/verification-and-learning.md). After initialization, configure `.config/ai/verification.json` for your stack, then run `python .config/ai/tools/fishdev.py verify`. The same command runs in CI. `check` enforces concrete architectural rules, while `retro` drafts proposals from repeated human corrections for review.
+
 ## Why AI Agnosticism Matters
 
 The AI landscape is moving incredibly fast. Today's best coding assistant might be obsolete in six months, and development teams are often fractured across multiple tools (like Copilot, Claude, Gemini, Cursor, or Aider). 

@@ -1,15 +1,19 @@
 {
-  "version": "0.10.3.dev0",
+  "version": "1.1.4.dev0",
   "integration_state_schema": 1,
   "installed_integrations": [
-    "gemini"
+    "generic"
   ],
   "integration_settings": {
-    "gemini": {
+    "generic": {
       "script": "sh",
+      "raw_options": "--commands-dir .config/ai/commands",
+      "parsed_options": {
+        "commands_dir": ".config/ai/commands"
+      },
       "invoke_separator": "."
     }
   },
-  "integration": "gemini",
-  "default_integration": "gemini"
+  "integration": "generic",
+  "default_integration": "generic"
 }

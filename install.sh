@@ -7,13 +7,23 @@ echo "🐟 Initializing FishDev AI workflow..."
 
 # 1. Create directories
 echo "Creating repository layout..."
-mkdir -p .config/ai/defaults
+mkdir -p .config/ai/defaults .config/ai/tools docs
 
 # 2. Download workflow files
 echo "Downloading core workflow files..."
 curl -fsSL "$REPO_RAW_URL/start.ai" -o start.ai
 curl -fsSL "$REPO_RAW_URL/fishdev-init.md" -o fishdev-init.md
 curl -fsSL "$REPO_RAW_URL/.config/ai/defaults/constitution.md" -o .config/ai/defaults/constitution.md
+curl -fsSL "$REPO_RAW_URL/.config/ai/defaults/verification.json" -o .config/ai/defaults/verification.json
+curl -fsSL "$REPO_RAW_URL/.config/ai/defaults/rules.json" -o .config/ai/defaults/rules.json
+curl -fsSL "$REPO_RAW_URL/.config/ai/tools/fishdev.py" -o .config/ai/tools/fishdev.py
+curl -fsSL "$REPO_RAW_URL/docs/verification-and-learning.md" -o docs/verification-and-learning.md
+cp .config/ai/defaults/verification.json .config/ai/verification.json
+cp .config/ai/defaults/rules.json .config/ai/rules.json
+touch .gitignore
+for ignored in '.config/ai/reports/' '.config/ai/local/' '.config/ai/learning/proposals.json' '__pycache__/'; do
+    grep -Fxq "$ignored" .gitignore || echo "$ignored" >> .gitignore
+done
 
 # 3. Create pointer files and state files
 echo "Setting up agent pointers and state files..."
@@ -48,7 +58,7 @@ uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 # 5. Initialize SpecKit
 echo "Initializing SpecKit..."
 # Using --ignore-agent-tools to prevent interactive blocks and checks during automated setup
-specify init . --here --force --ignore-agent-tools
+specify init . --here --force --ignore-agent-tools --script sh --integration generic --integration-options="--commands-dir .config/ai/commands"
 
 # Copy constitution for SpecKit memory
 mkdir -p .specify/memory

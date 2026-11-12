@@ -35,6 +35,12 @@ GEMINI.md
     handoff.ai
     defaults/
       constitution.md
+      verification.json
+      rules.json
+    tools/
+      fishdev.py
+    verification.json
+    rules.json
 ```
 
 The root `start.ai` is the entry point.
@@ -46,6 +52,8 @@ All durable AI workflow files belong under:
 ```
 
 Vendor-specific files exist only as compatibility shims.
+
+Initialization must copy the default verification and rule profiles into `.config/ai/`, install `tools/fishdev.py`, and configure SpecKit's generic integration under `.config/ai/commands/`. The new project's verification profile contains visible failing placeholders for stack-specific steps; replace them or explicitly mark categories inapplicable with a reason. See `docs/verification-and-learning.md` in FishDev for the contract.
 
 ---
 

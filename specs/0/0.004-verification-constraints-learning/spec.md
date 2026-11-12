@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-12
 
-**Status**: Draft
+**Status**: Implemented (native Windows execution not yet validated)
 
 ## Problem
 

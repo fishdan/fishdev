@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "steps": [
+    {
+      "id": "build",
+      "category": "build",
+      "applicability": "required",
+      "failure_policy": "blocking",
+      "command": ["{python}", "-c", "raise SystemExit('Configure the project build command in .config/ai/verification.json')"]
+    },
+    {
+      "id": "tests",
+      "category": "tests",
+      "applicability": "required",
+      "failure_policy": "blocking",
+      "command": ["{python}", "-c", "raise SystemExit('Configure the project test command in .config/ai/verification.json')"]
+    },
+    {
+      "id": "browser",
+      "category": "browser",
+      "applicability": "required",
+      "failure_policy": "blocking",
+      "command": ["{python}", "-c", "raise SystemExit('Configure a browser interaction or mark this category inapplicable with a reason')"]
+    },
+    {
+      "id": "security",
+      "category": "security",
+      "applicability": "required",
+      "failure_policy": "blocking",
+      "command": ["{python}", ".config/ai/tools/fishdev.py", "check"]
+    },
+    {
+      "id": "performance",
+      "category": "performance",
+      "applicability": "required",
+      "failure_policy": "blocking",
+      "command": ["{python}", "-c", "raise SystemExit('Configure a performance measurement and budget or mark this category inapplicable with a reason')"],
+      "max_value": 0,
+      "unit": "project-defined"
+    },
+    {
+      "id": "learning",
+      "category": "learning",
+      "applicability": "required",
+      "failure_policy": "advisory",
+      "command": ["{python}", ".config/ai/tools/fishdev.py", "retro"]
+    }
+  ]
+}

@@ -1,5 +1,14 @@
 # Progress Log
 
+## 2026-11-12 — Verification, executable constraints, and retrospective learning (0.004/T002–T014)
+
+- Added the Python 3.11 standard-library `.config/ai/tools/fishdev.py` runner with `verify`, `check`, and `retro` commands. Version 1 JSON contracts, starter and FishDev profiles, local reports, and rule exceptions are documented in `docs/verification-and-learning.md` and the spec's `contracts.md`.
+- Verification declares build, tests, browser, security, and performance applicability explicitly; runs the same steps locally and with `--ci`; fails on missing required checks; and measures project-defined performance budgets. The FishDev profile also runs retrospective analysis as an advisory learning step.
+- Added deterministic path and text rules with stable IDs, diagnostics, narrowly scoped expiring exceptions, and explicit advisory constitutional principles. Migrated tracked SpecKit commands from `.gemini/commands` to the generic `.config/ai/commands` integration instead of exempting existing violations.
+- Retrospective analysis reads structured corrections from progress/handoff and optional local JSONL imports, requires two distinct sessions, deduplicates proposals, preserves dispositions, and does not modify governing files. Reports, raw imports, and draft proposals are ignored by Git until reviewed.
+- Updated Bash installer, Windows setup, startup guide, init guide, README, and a GitHub Actions workflow. The starter profile contains visible failing placeholders for unknown stack-specific steps; its security step runs architectural checks, with dependency scanning configured per project.
+- Validation: `python3 -m unittest discover -s tests -v` passed (11 tests); Python 3.11 suite passed (11 tests); `python3 .config/ai/tools/fishdev.py verify` and `verify --ci` passed; Python 3.11 `verify --ci` passed; `python3 .config/ai/tools/fishdev.py retro` completed with zero correction events; `bash -n install.sh` passed. Native Windows execution and hosted GitHub Actions runs were unavailable in this environment.
+
 ## 2026-11-12 — Specification for verification, constraints, and retrospective learning (0.004/T001)
 
 - Created branch `specs/0.004-verification-constraints-learning` and added `spec.md`, `plan.md`, and `tasks.md` for three independently testable capabilities: project verification, deterministic architectural checks, and evidence-backed retrospective proposals.

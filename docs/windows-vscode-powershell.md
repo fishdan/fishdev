@@ -55,10 +55,23 @@ Run the following in the same project root. These downloads save files; they do 
 ```powershell
 $ErrorActionPreference = 'Stop'
 $fishDevRaw = 'https://raw.githubusercontent.com/fishdan/fishdev/main'
-New-Item -ItemType Directory -Force -Path .config/ai/defaults | Out-Null
+New-Item -ItemType Directory -Force -Path .config/ai/defaults, .config/ai/tools, docs | Out-Null
 Invoke-WebRequest "$fishDevRaw/start.ai" -OutFile start.ai
 Invoke-WebRequest "$fishDevRaw/fishdev-init.md" -OutFile fishdev-init.md
 Invoke-WebRequest "$fishDevRaw/.config/ai/defaults/constitution.md" -OutFile .config/ai/defaults/constitution.md
+Invoke-WebRequest "$fishDevRaw/.config/ai/defaults/verification.json" -OutFile .config/ai/defaults/verification.json
+Invoke-WebRequest "$fishDevRaw/.config/ai/defaults/rules.json" -OutFile .config/ai/defaults/rules.json
+Invoke-WebRequest "$fishDevRaw/.config/ai/tools/fishdev.py" -OutFile .config/ai/tools/fishdev.py
+Invoke-WebRequest "$fishDevRaw/docs/verification-and-learning.md" -OutFile docs/verification-and-learning.md
+Copy-Item .config/ai/defaults/verification.json .config/ai/verification.json
+Copy-Item .config/ai/defaults/rules.json .config/ai/rules.json
+$ignoreEntries = @('.config/ai/reports/', '.config/ai/local/', '.config/ai/learning/proposals.json', '__pycache__/')
+if (-not (Test-Path .gitignore)) { New-Item -ItemType File .gitignore | Out-Null }
+foreach ($entry in $ignoreEntries) {
+    if (-not (Get-Content .gitignore | Where-Object { $_ -eq $entry })) {
+        Add-Content -Path .gitignore -Value $entry
+    }
+}
 
 Set-Content -Encoding ascii -Path AGENTS.md -Value 'Read and follow start.ai before doing any work.'
 Copy-Item AGENTS.md CLAUDE.md
@@ -71,6 +84,8 @@ Copy-Item .config/ai/defaults/constitution.md .specify/memory/constitution.md
 
 The three `.ai` state files begin empty except for their headings. Keep future project settings, progress, and handoff notes in `.config/ai/`. The agent pointer files all direct assistants to `start.ai`.
 
+Configure the new `.config/ai/verification.json` for your project's build, tests, browser surface, security checks, and performance budget. The starter profile deliberately fails unconfigured steps. Read the [verification and learning guide](verification-and-learning.md) for the JSON contract and examples.
+
 ## 5. Verify and begin
 
 ```powershell
@@ -78,6 +93,8 @@ specify version
 Test-Path start.ai, .config/ai/progress.ai, .specify/memory/constitution.md, .specify/scripts/powershell
 git status --short
 ```
+
+Once the profile is configured, run `& (uv python find 3.11) .config/ai/tools/fishdev.py verify` from the project root. Run the equivalent Python command in CI after Python 3.11 is installed.
 
 All four `Test-Path` results should be `True`. In your AI assistant's chat in VS Code, say: **“Follow the instructions in start.ai.”** Review the resulting changes, then commit the initialized workflow files with your project.
 

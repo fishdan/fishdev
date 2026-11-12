@@ -22,6 +22,13 @@ Deliver one project-owned verification contract, a deterministic constraint chec
 4. Define a local correction-event and proposal format. Use project records as the baseline; allow optional imported transcripts only through an explicit, documented path.
 5. Choose proposal storage and deduplication so repeated runs preserve reviewer decisions without committing raw session logs or secrets.
 
+## Resolved design
+
+- Python 3.11+ standard library and JSON version 1 contracts work on the documented Bash and native Windows paths without another package dependency. The command uses argument arrays, so it does not need shell-specific quoting. Native Windows execution remains untested in this Linux environment.
+- A profile explicitly declares every standard category. Missing required commands, invalid configurations, and blocking failures return nonzero; reports distinguish pass, fail, and skip. Performance budgets are project-defined.
+- The checker supports path and line-pattern prohibitions with stable rule IDs, exact-file exceptions, expiry, and advisory coverage listings. Legacy `.gemini/commands` files were replaced by SpecKit's generic `.config/ai/commands` integration so FishDev's own rule can pass without an exception.
+- The retrospective reads structured correction entries in project history and optional local JSONL events. It groups repeated wording across distinct sessions, writes reviewable proposals and single-session observations, and preserves dispositions. Proposal and raw event files are ignored by Git until reviewed.
+
 ## Constitution check
 
 - **Spec-driven**: This spec and [tasks.md](tasks.md) precede implementation. Each future change must map to a task and progress entry.
@@ -50,3 +57,4 @@ Deliver one project-owned verification contract, a deterministic constraint chec
 - A generic “Clean Code” checker would overclaim coverage; require an objective invariant and report advisory principles separately.
 - Optional scanners and browser tools differ across stacks; distinguish inapplicable from required-but-missing.
 - Session records may not preserve human corrections. The retrospective must disclose missing evidence rather than infer recurrence.
+- Different wording for the same correction is not grouped automatically; maintainers can consolidate wording in project records. Common secrets and email addresses are redacted, but review is still required before explicitly committing proposals.
