@@ -1,1 +1,10 @@
 # Handoff
+
+## 2026-11-12 — 0.004 specification handoff
+
+- Branch: `specs/0.004-verification-constraints-learning`
+- Current task: T001 complete; T002 is next (finalize contracts and cross-platform runtime).
+- Files modified: `.config/ai/progress.ai`, `.config/ai/handoff.ai`, and `specs/0/0.004-verification-constraints-learning/{spec,plan,tasks}.md`.
+- Validation: `git diff --check` and `bash -n install.sh` passed; specification links and template placeholders were checked. Feature tests await implementation.
+- Known issues: no feature implementation exists yet; session transcripts are optional and may be unavailable; native Windows execution is unavailable in this environment.
+- Next action: complete T002, then implement and validate US1 before US2 and US3.

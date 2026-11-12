@@ -1,5 +1,19 @@
 # Progress Log
 
+## 2026-11-12 — Specification for verification, constraints, and retrospective learning (0.004/T001)
+
+- Created branch `specs/0.004-verification-constraints-learning` and added `spec.md`, `plan.md`, and `tasks.md` for three independently testable capabilities: project verification, deterministic architectural checks, and evidence-backed retrospective proposals.
+- Decisions: keep durable workflow data under `.config/ai/`; require explicit applicability and visible failure for missing verification steps; enforce only objective constitutional rules; require human review before learning proposals alter governing files; support native Windows in the runner design.
+- Scope: specification and planning only. Implementation begins with T002 contract and runtime selection. No new dependency or feature code was added.
+- Validation: `git diff --check` and `bash -n install.sh` passed; no template placeholders remained in the new spec files. Feature tests await implementation.
+
+## 2026-11-12 — Monthly vulnerability audit (0.001)
+
+- Stack: Bash installer, Markdown workflow documents, and SpecKit templates/scripts. No application package or lockfile exists; the `.specify/integrations/*.manifest.json` files list integration files rather than dependencies.
+- Commands: `git ls-files '*lock*' '*manifest*' 'package.json' 'pom.xml' 'build.gradle*' 'requirements*.txt' 'pyproject.toml' 'Cargo.toml' 'go.mod'`; `rg -n 'curl|wget|uv tool|pip install|npm install|apt |git\\+' install.sh README.md fishdev-init.md .specify/scripts/bash .specify/integration.json`; `bash -n install.sh`.
+- Result: no versioned application dependencies to scan and no identified critical or high severity vulnerabilities. The installer still downloads shell code and SpecKit from mutable remote locations; pinning and integrity verification remain candidate work for a separate security spec.
+- Validation: `bash -n install.sh` passed.
+
 ## 2026-10-13 — Windows setup guide (0.003/T001–T003)
 
 - Added `docs/windows-vscode-powershell.md` and linked it from the README. The guide installs uv, Python 3.11, and SpecKit; initializes PowerShell scripts with SpecKit's generic integration under `.config/ai/commands`; and creates FishDev's workflow, pointer, and state files without running Bash.
