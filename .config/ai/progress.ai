@@ -1,5 +1,28 @@
 # Progress Log
 
+## 2026-11-12 — Verification, executable constraints, and retrospective learning (0.004/T002–T014)
+
+- Added the Python 3.11 standard-library `.config/ai/tools/fishdev.py` runner with `verify`, `check`, and `retro` commands. Version 1 JSON contracts, starter and FishDev profiles, local reports, and rule exceptions are documented in `docs/verification-and-learning.md` and the spec's `contracts.md`.
+- Verification declares build, tests, browser, security, and performance applicability explicitly; runs the same steps locally and with `--ci`; fails on missing required checks; and measures project-defined performance budgets. The FishDev profile also runs retrospective analysis as an advisory learning step.
+- Added deterministic path and text rules with stable IDs, diagnostics, narrowly scoped expiring exceptions, and explicit advisory constitutional principles. Migrated tracked SpecKit commands from `.gemini/commands` to the generic `.config/ai/commands` integration instead of exempting existing violations.
+- Retrospective analysis reads structured corrections from progress/handoff and optional local JSONL imports, requires two distinct sessions, deduplicates proposals, preserves dispositions, and does not modify governing files. Reports, raw imports, and draft proposals are ignored by Git until reviewed.
+- Updated Bash installer, Windows setup, startup guide, init guide, README, and a GitHub Actions workflow. The starter profile contains visible failing placeholders for unknown stack-specific steps; its security step runs architectural checks, with dependency scanning configured per project.
+- Validation: `python3 -m unittest discover -s tests -v` passed (11 tests); Python 3.11 suite passed (11 tests); `python3 .config/ai/tools/fishdev.py verify` and `verify --ci` passed; Python 3.11 `verify --ci` passed; `python3 .config/ai/tools/fishdev.py retro` completed with zero correction events; `bash -n install.sh` passed. Native Windows execution and hosted GitHub Actions runs were unavailable in this environment.
+
+## 2026-11-12 — Specification for verification, constraints, and retrospective learning (0.004/T001)
+
+- Created branch `specs/0.004-verification-constraints-learning` and added `spec.md`, `plan.md`, and `tasks.md` for three independently testable capabilities: project verification, deterministic architectural checks, and evidence-backed retrospective proposals.
+- Decisions: keep durable workflow data under `.config/ai/`; require explicit applicability and visible failure for missing verification steps; enforce only objective constitutional rules; require human review before learning proposals alter governing files; support native Windows in the runner design.
+- Scope: specification and planning only. Implementation begins with T002 contract and runtime selection. No new dependency or feature code was added.
+- Validation: `git diff --check` and `bash -n install.sh` passed; no template placeholders remained in the new spec files. Feature tests await implementation.
+
+## 2026-11-12 — Monthly vulnerability audit (0.001)
+
+- Stack: Bash installer, Markdown workflow documents, and SpecKit templates/scripts. No application package or lockfile exists; the `.specify/integrations/*.manifest.json` files list integration files rather than dependencies.
+- Commands: `git ls-files '*lock*' '*manifest*' 'package.json' 'pom.xml' 'build.gradle*' 'requirements*.txt' 'pyproject.toml' 'Cargo.toml' 'go.mod'`; `rg -n 'curl|wget|uv tool|pip install|npm install|apt |git\\+' install.sh README.md fishdev-init.md .specify/scripts/bash .specify/integration.json`; `bash -n install.sh`.
+- Result: no versioned application dependencies to scan and no identified critical or high severity vulnerabilities. The installer still downloads shell code and SpecKit from mutable remote locations; pinning and integrity verification remain candidate work for a separate security spec.
+- Validation: `bash -n install.sh` passed.
+
 ## 2026-10-13 — Windows setup guide (0.003/T001–T003)
 
 - Added `docs/windows-vscode-powershell.md` and linked it from the README. The guide installs uv, Python 3.11, and SpecKit; initializes PowerShell scripts with SpecKit's generic integration under `.config/ai/commands`; and creates FishDev's workflow, pointer, and state files without running Bash.
@@ -17,3 +40,7 @@
 - Commands: `git ls-files '*lock*' '*manifest*' 'package.json' 'pom.xml' 'build.gradle*' 'requirements*.txt' 'pyproject.toml' 'Cargo.toml' 'go.mod'`; `rg -n 'curl|wget|uv tool|pip install|npm install|apt |git\\+' install.sh README.md fishdev-init.md .specify/scripts/bash .specify/integration.json`; `bash -n install.sh`.
 - Dependency vulnerability result: no versioned application dependencies to scan and no identified critical or high severity CVEs to remediate. The installer downloads shell code and SpecKit from mutable remote locations; pinning and integrity verification should be evaluated in a scoped security task.
 - Validation: `bash -n install.sh` failed with `line 61: unexpected EOF while looking for matching '"'`. This installer syntax defect is a recommended next task; no installer behavior was changed during this audit.
+
+## 2026-10-15 — Merge Windows guide to main
+
+- Merged `docs/windows-vscode-powershell-setup` into `main` at the human's direction. Added a note to the guide stating it has not been tested on native Windows.

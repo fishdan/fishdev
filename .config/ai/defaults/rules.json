@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "id": "VENDOR-001",
+      "principle": "start.ai AI Agnosticism Rule",
+      "kind": "forbid_paths",
+      "paths": [".claude/*", ".codex/*", ".gemini/*", ".cursor/*"],
+      "severity": "error",
+      "message": "Vendor-specific workflow files belong under .config/ai.",
+      "remediation": "Move durable instructions to .config/ai; keep root vendor files as pointers only."
+    },
+    {
+      "id": "ARCH-001",
+      "principle": "Constitution IV: low coupling and clear responsibility",
+      "kind": "forbid_text",
+      "files": [".config/ai/tools/*.py"],
+      "pattern": "^\\s*(?:from|import)\\s+tests(?:\\.|\\s|$)",
+      "severity": "error",
+      "message": "Production workflow code must not import test modules.",
+      "remediation": "Move reusable behavior into production code and import it from tests."
+    }
+  ],
+  "exceptions": [],
+  "advisory_principles": [
+    "Constitution IV: general Clean Code quality",
+    "Constitution V: continuous refactoring judgment",
+    "Constitution VI: narrow task scope"
+  ]
+}

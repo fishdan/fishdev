@@ -90,6 +90,10 @@ Git is authoritative. Do not assume branch state from documentation. Always chec
 
 Before declaring work complete: run relevant tests, run broader suites when practical, and record commands and outcomes. If testing cannot be performed, document the reason.
 
+If `.config/ai/verification.json` exists, run `python .config/ai/tools/fishdev.py verify` from the repository root before declaring work complete. On systems where the executable is `python3`, use that name. A failed required step, missing tool, or invalid profile requires a fix or a documented handoff; a skip is never a pass. See `docs/verification-and-learning.md` for the project contract and CI invocation.
+
+When progress or session records show repeated human corrections, run `python .config/ai/tools/fishdev.py retro`. Review evidence and candidate changes in `.config/ai/learning/proposals.json`. Do not adopt a proposal without a specification, task, human review, and validation. The retrospective never changes governing files itself.
+
 ---
 
 # Handoff Requirements

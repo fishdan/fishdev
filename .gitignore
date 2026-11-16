@@ -1,0 +1,4 @@
+.config/ai/reports/
+.config/ai/local/
+.config/ai/learning/proposals.json
+__pycache__/

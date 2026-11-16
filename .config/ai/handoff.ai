@@ -1,1 +1,10 @@
 # Handoff
+
+## 2026-11-12 — 0.004 implementation handoff
+
+- Branch: `specs/0.004-verification-constraints-learning`
+- Current task: T001–T014 complete. The branch is ready for human review.
+- Files modified: `.config/ai/` workflow profiles, runner, generic SpecKit commands, tests, installer, startup and setup documents, CI workflow, spec artifacts, and progress history.
+- Validation: Python 3.11 fixture suite (11 tests), local and `--ci` verification, and `bash -n install.sh` passed. Native Windows execution and hosted CI were unavailable here.
+- Known limits: the retrospective recognizes structured correction records and groups repeated wording; raw session transcripts require optional import. Starter verification commands require each target project to configure its own build, tests, browser applicability, security scans, and performance budget.
+- Next action: review the branch, then validate the PowerShell path on a Windows machine when available.
