@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "release": "v0.5.0",
+  "source": "https://raw.githubusercontent.com/fishdan/fishdev/v0.5.0",
+  "files": [
+    {
+      "path": "start.ai",
+      "sha256": "f9cf8f94bf83ae558d5decbea4825ee331cc74722f281a16ae9fec4d41417c78"
+    },
+    {
+      "path": "fishdev-init.md",
+      "sha256": "1203bf823ef1f03fb6aa3adbb14798dd7603520a232c30dfbb00bb2fc0ee3c0f"
+    },
+    {
+      "path": ".config/ai/defaults/constitution.md",
+      "sha256": "3d95ca26524b2d281e553ced769a5a4c0dc710a81bb9bd4103942a3b9d940035"
+    },
+    {
+      "path": ".config/ai/defaults/verification.json",
+      "sha256": "acfcbd02dfd65dda1acf469b90201e6d6523d8a3aaf137bdcefa77510540dba3"
+    },
+    {
+      "path": ".config/ai/defaults/rules.json",
+      "sha256": "7e6f2ce3182cea60a775e461f93ee4d103b68d8289d2f91cce7dd632789d2af6"
+    },
+    {
+      "path": ".config/ai/tools/fishdev.py",
+      "sha256": "1f8e9016627a09a2485ebd05d78e17a7b8b3b98eeb9505c7054a0c8033f6cefa"
+    },
+    {
+      "path": "docs/verification-and-learning.md",
+      "sha256": "5f134dc610987e9d48081af84f80b2ba2973e92f2985b4e6884162e6eb804394"
+    }
+  ]
+}

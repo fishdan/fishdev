@@ -50,6 +50,7 @@ At the start of every session, check `progress.ai` for the most recent entry men
 If no such entry exists in the last 30 days, run a monthly vulnerability audit based on the technology stack:  examples below
 - Backend/Java: run the Java CVE validation workflow and use an NVD API key  when invoking OWASP dependency-check or equivalent tooling.
 - Frontend/Node: run `npm audit` in `frontend/`.
+- Pinned downloads: if `.config/ai/release.json` exists, run `python .config/ai/tools/release.py check`. Review each reported pin against upstream security advisories and newer releases, and update stale or vulnerable pins through a spec task as described in `docs/release-integrity.md`.
 
 Fix any critical or high-severity vulnerabilities that can be remediated safely in the current session.
 

@@ -1,10 +1,10 @@
 # Handoff
 
-## 2026-11-12 — 0.004 implementation handoff
+## 2026-11-16 — 0.005 implementation handoff
 
-- Branch: `specs/0.004-verification-constraints-learning`
-- Current task: T001–T014 complete. The branch is ready for human review.
-- Files modified: `.config/ai/` workflow profiles, runner, generic SpecKit commands, tests, installer, startup and setup documents, CI workflow, spec artifacts, and progress history.
-- Validation: Python 3.11 fixture suite (11 tests), local and `--ci` verification, and `bash -n install.sh` passed. Native Windows execution and hosted CI were unavailable here.
-- Known limits: the retrospective recognizes structured correction records and groups repeated wording; raw session transcripts require optional import. Starter verification commands require each target project to configure its own build, tests, browser applicability, security scans, and performance budget.
-- Next action: review the branch, then validate the PowerShell path on a Windows machine when available.
+- Branch: `specs/0.005-installer-download-integrity`.
+- Current task: T001–T012 complete. T013 pre-release validation is done; the remaining steps need the human.
+- Files modified: `install.sh`, `README.md`, `fishdev-init.md`, `start.ai`, `docs/windows-vscode-powershell.md`, new `docs/release-integrity.md`, `.github/workflows/verify.yml`, `.config/ai/{release.json,release-manifest.json,rules.json,verification.json}`, new `.config/ai/tools/release.py`, `.gitattributes`, `tests/test_release.py`, `tests/test_install.py`, spec artifacts, progress.
+- Tests: 33 unit tests (system Python and 3.11), `verify` and `verify --ci`, `bash -n`, and an end-to-end install with real uv and SpecKit downloads. All passed.
+- Known issues: the PowerShell blocks have not run on native Windows. The README command 404s until the `v0.5.0` tag is pushed.
+- Next action: open a PR and confirm hosted CI passes with the SHA-pinned actions. After merge, tag the merge commit `v0.5.0`, push the tag, run the README command in an empty directory, and record the result for T013.

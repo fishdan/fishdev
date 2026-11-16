@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "release": "v0.5.0",
+  "source": "https://raw.githubusercontent.com/fishdan/fishdev",
+  "files": [
+    "start.ai",
+    "fishdev-init.md",
+    ".config/ai/defaults/constitution.md",
+    ".config/ai/defaults/verification.json",
+    ".config/ai/defaults/rules.json",
+    ".config/ai/tools/fishdev.py",
+    "docs/verification-and-learning.md"
+  ],
+  "generated": [
+    "fishdev-init.md",
+    "install.sh",
+    "README.md",
+    "docs/windows-vscode-powershell.md",
+    ".github/workflows/verify.yml"
+  ],
+  "pins": {
+    "uv": {
+      "version": "0.13.7",
+      "minimum": "0.4.0",
+      "reviewed": "2026-11-16",
+      "source": "https://github.com/astral-sh/uv/releases/tag/0.13.7",
+      "installer_sh": {
+        "url": "https://github.com/astral-sh/uv/releases/download/0.13.7/uv-installer.sh",
+        "sha256": "d263ee68314cf5bea36b08e6bd9e2c4563240d7adb73756cf33af5c199b92db4"
+      },
+      "installer_ps1": {
+        "url": "https://github.com/astral-sh/uv/releases/download/0.13.7/uv-installer.ps1",
+        "sha256": "d9e70de578ea2653b631a5933c0296368fca4c91f412b46680661b81bbc399e0"
+      }
+    },
+    "specify-cli": {
+      "version": "1.3.3",
+      "reviewed": "2026-11-16",
+      "source": "https://pypi.org/project/specify-cli/1.3.3/",
+      "wheel": {
+        "url": "https://files.pythonhosted.org/packages/2d/89/404e8e9aa5518a6ebb72a2f70f847b282807feaf94074d576ab5f947596a/specify_cli-1.3.3-py3-none-any.whl",
+        "sha256": "661789638709a922bebb01cab2956c6be9730d487324ccdef9b4cb8ae8110c8b"
+      }
+    },
+    "actions": {
+      "actions/checkout": {
+        "version": "v7.0.1",
+        "commit": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "reviewed": "2026-11-16",
+        "source": "https://github.com/actions/checkout/releases/tag/v7.0.1"
+      },
+      "actions/setup-python": {
+        "version": "v7.1.0",
+        "commit": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+        "reviewed": "2026-11-16",
+        "source": "https://github.com/actions/setup-python/releases/tag/v7.1.0"
+      }
+    }
+  }
+}
