@@ -1,10 +1,10 @@
 # Handoff
 
-## 2026-11-12 — 0.004 implementation handoff
+## 2026-11-16 — 0.005 specification handoff
 
-- Branch: `specs/0.004-verification-constraints-learning`
-- Current task: T001–T014 complete. The branch is ready for human review.
-- Files modified: `.config/ai/` workflow profiles, runner, generic SpecKit commands, tests, installer, startup and setup documents, CI workflow, spec artifacts, and progress history.
-- Validation: Python 3.11 fixture suite (11 tests), local and `--ci` verification, and `bash -n install.sh` passed. Native Windows execution and hosted CI were unavailable here.
-- Known limits: the retrospective recognizes structured correction records and groups repeated wording; raw session transcripts require optional import. Starter verification commands require each target project to configure its own build, tests, browser applicability, security scans, and performance budget.
-- Next action: review the branch, then validate the PowerShell path on a Windows machine when available.
+- Branch: `specs/0.005-installer-download-integrity` (from `main` after 0.004 merged as PR #2).
+- Current task: T001 complete (spec, plan, tasks). T002 is next.
+- Files modified: `specs/0/0.005-installer-download-integrity/{spec,plan,tasks}.md`, `.config/ai/progress.ai`, `.config/ai/handoff.ai`.
+- Tests: specification-only change. `git diff --check` and `fishdev.py verify` were run (see progress).
+- Known issues: native Windows execution of the setup guide is still unvalidated (carried over from 0.003/0.004).
+- Next action: T002. Resolve source reference, manifest and pin formats, uv and SpecKit pinning methods and versions, upgrade behavior, and rule pattern from official sources.

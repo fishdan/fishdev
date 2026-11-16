@@ -1,5 +1,17 @@
 # Progress Log
 
+## 2026-11-16 — Specification for pinned, integrity-verified installer downloads (0.005/T001)
+
+- Created branch `specs/0.005-installer-download-integrity` from `main` and added `spec.md`, `plan.md`, and `tasks.md`. Addresses the mutable-download finding from the 2026-10-13 and 2026-11-12 monthly audits.
+- Scope: FishDev workflow files (SHA-256 manifest, immutable release reference, stage-verify-write with no partial installs), the bootstrap (download-verify-run), uv and SpecKit (one recorded pin, same version on Bash and Windows), and CI actions (full commit SHAs). Maintenance: a deterministic manifest generator, a drift check in `verify`, an unpinned-download rule in `check`, and pin review in the monthly audit.
+- Decisions: fail closed with no default bypass; document that digests from the same repository do not defend against repository or account compromise; release signing and adopter dependency pinning are out of scope. Source-reference, format, and version choices are deferred to T002.
+- Scope: specification and planning only. No installer or runner code changed.
+
+## 2026-11-16 — Pull request for 0.004 (T014 follow-up)
+
+- Pushed `specs/0.004-verification-constraints-learning` and opened https://github.com/fishdan/fishdev/pull/2 against `main` at the human's direction. The human merged it into `main` (39f6f36).
+- Hosted CI: the `FishDev verification` workflow (`python .config/ai/tools/fishdev.py verify --ci`, Python 3.11, ubuntu-latest) passed on both the push and pull_request triggers. Local `verify` also passed at session start. Native Windows execution remains unvalidated.
+
 ## 2026-11-12 — Verification, executable constraints, and retrospective learning (0.004/T002–T014)
 
 - Added the Python 3.11 standard-library `.config/ai/tools/fishdev.py` runner with `verify`, `check`, and `retro` commands. Version 1 JSON contracts, starter and FishDev profiles, local reports, and rule exceptions are documented in `docs/verification-and-learning.md` and the spec's `contracts.md`.
