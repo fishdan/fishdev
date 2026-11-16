@@ -1,0 +1,8 @@
+# Release digests are computed over these exact bytes. Keep their line endings stable
+# on every platform so a Windows checkout computes the same digests as GitHub serves.
+install.sh text eol=lf
+start.ai text eol=lf
+fishdev-init.md text eol=lf
+README.md text eol=lf
+.config/ai/** text eol=lf
+docs/*.md text eol=lf

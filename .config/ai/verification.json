@@ -6,7 +6,7 @@
       "category": "build",
       "applicability": "required",
       "failure_policy": "blocking",
-      "command": ["{python}", "-m", "py_compile", ".config/ai/tools/fishdev.py"]
+      "command": ["{python}", "-m", "py_compile", ".config/ai/tools/fishdev.py", ".config/ai/tools/release.py"]
     },
     {
       "id": "tests",
@@ -28,6 +28,13 @@
       "applicability": "required",
       "failure_policy": "blocking",
       "command": ["{python}", ".config/ai/tools/fishdev.py", "check"]
+    },
+    {
+      "id": "release",
+      "category": "security",
+      "applicability": "required",
+      "failure_policy": "blocking",
+      "command": ["{python}", ".config/ai/tools/release.py", "check"]
     },
     {
       "id": "performance",

@@ -4,7 +4,7 @@
 
 **Created**: 2026-11-16
 
-**Status**: Specified
+**Status**: Implemented; release tag `v0.5.0` and native Windows execution not yet validated
 
 ## Problem
 

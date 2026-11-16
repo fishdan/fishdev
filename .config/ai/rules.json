@@ -19,6 +19,16 @@
       "severity": "error",
       "message": "Production workflow code must not import test modules.",
       "remediation": "Move reusable behavior into production code and import it from tests."
+    },
+    {
+      "id": "SEC-001",
+      "principle": "start.ai Security Requirements: pinned, verified downloads (spec 0.005)",
+      "kind": "forbid_text",
+      "files": ["install.sh", "README.md", "fishdev-init.md", "docs/*.md", ".github/workflows/*"],
+      "pattern": "\\b(?:curl|wget)\\b[^|#]*\\|\\s*(?:sudo\\s+)?(?:ba|z|da)?sh\\b|\\b(?:irm|iwr|Invoke-RestMethod|Invoke-WebRequest)\\b[^|]*\\|\\s*iex\\b|raw\\.githubusercontent\\.com/[^/\\s]+/[^/\\s]+/(?:main|master|HEAD)/|git\\+https://[^\\s@'\\\"]+?\\.git(?![@\\w])|astral\\.sh/uv/install\\.(?:sh|ps1)|\\buv tool install\\b[^#\\n]*\\bspecify-cli(?![=\\w.-])|\\buses:\\s*[\\w./-]+@(?![0-9a-f]{40}\\b)",
+      "severity": "error",
+      "message": "Download uses a mutable reference or pipes remote content into a shell.",
+      "remediation": "Pin it in .config/ai/release.json and render it with .config/ai/tools/release.py update, or download to a file, check its SHA-256, then run it."
     }
   ],
   "exceptions": [],
