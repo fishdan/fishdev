@@ -28,4 +28,4 @@
 
 - [x] **T011** Add the unpinned-download rule with failing and passing fixtures. Make FishDev's repository pass it.
 - [x] **T012** Add pin review to `start.ai`'s monthly security audit. Document the threat model, bootstrap verification, and the release and pin-update procedure.
-- [ ] **T013** (Pre-release validation done; tag `v0.5.0` and the install from the published tag await merge.) Cut the first FishDev release. Run an end-to-end install from it in a clean directory, run the tests and local and CI verification, and record the outcomes in `.config/ai/progress.ai`.
+- [x] **T013** Cut the first FishDev release. Run an end-to-end install from it in a clean directory, run the tests and local and CI verification, and record the outcomes in `.config/ai/progress.ai`.

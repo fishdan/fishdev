@@ -1,10 +1,9 @@
 # Handoff
 
-## 2026-11-16 — 0.005 implementation handoff
+## 2026-11-16 — 0.005 released
 
-- Branch: `specs/0.005-installer-download-integrity`.
-- Current task: T001–T012 complete. T013 pre-release validation is done; the remaining steps need the human.
-- Files modified: `install.sh`, `README.md`, `fishdev-init.md`, `start.ai`, `docs/windows-vscode-powershell.md`, new `docs/release-integrity.md`, `.github/workflows/verify.yml`, `.config/ai/{release.json,release-manifest.json,rules.json,verification.json}`, new `.config/ai/tools/release.py`, `.gitattributes`, `tests/test_release.py`, `tests/test_install.py`, spec artifacts, progress.
-- Tests: 33 unit tests (system Python and 3.11), `verify` and `verify --ci`, `bash -n`, and an end-to-end install with real uv and SpecKit downloads. All passed.
-- Known issues: the PowerShell blocks have not run on native Windows. The README command 404s until the `v0.5.0` tag is pushed.
-- Next action: open a PR and confirm hosted CI passes with the SHA-pinned actions. After merge, tag the merge commit `v0.5.0`, push the tag, run the README command in an empty directory, and record the result for T013.
+- Branch: `specs/0.005-release-closeout` (records T013 only).
+- Current task: 0.005 complete. `v0.5.0` is tagged and published, and the README install was verified end to end on Linux.
+- Known gaps: the macOS `shasum` path and the native Windows PowerShell guide are not yet run on real machines.
+- Candidate follow-ups: release signing (Sigstore, GPG, or GitHub attestations); least-privilege `permissions: contents: read` in CI; pinning SpecKit's transitive dependencies if uv gains hash enforcement for tool installs.
+- Next action: validate on macOS and Windows when available; otherwise pick the next spec.

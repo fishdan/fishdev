@@ -1,5 +1,11 @@
 # Progress Log
 
+## 2026-11-16 — First release v0.5.0 (0.005/T013)
+
+- Hosted CI on PR #3 passed with the SHA-pinned `actions/checkout` v7.0.1 and `actions/setup-python` v7.1.0, including the new `release` drift check and tests. The human merged PR #3 (4753048).
+- `release.py check` reported `current` on the merge commit. Tagged 4753048 as annotated tag `v0.5.0` and pushed it.
+- End-to-end check: ran the README's Linux command, fetched from `main` on GitHub, in an empty Git repository with an isolated HOME and `PATH=/usr/bin:/bin`. The bootstrap check reported `fishdev-install.sh: OK`. The installer verified all 7 FishDev files from the tag, installed uv 0.13.7 from the verified installer and specify-cli 1.3.3 from the verified wheel, initialized SpecKit, and exited 0. The installed `start.ai` and `fishdev.py` are byte-identical to the repository. The macOS `shasum` variant and native Windows remain unvalidated here.
+
 ## 2026-11-16 — Pinned, integrity-verified installer downloads (0.005/T002–T012, T013 partial)
 
 - T002 decisions (recorded in the plan): FishDev files come from release-tag URLs and are checked against SHA-256 digests embedded per installer path. First release is `v0.5.0`. Third-party pins use a 7-day cooldown: uv 0.13.7, specify-cli 1.3.3 (PyPI wheel, digest-checked, installed from the local file), actions/checkout v7.0.1 and actions/setup-python v7.1.0 by commit SHA. uv `tool install` ignored a wrong `--hash` in a constraints file, so SpecKit's transitive dependencies stay unpinned (documented risk). uv's PowerShell installer does not check its archive (documented). uv 0.4.0 is the tested minimum. The installer now refuses existing installations instead of overwriting `progress.ai` and `handoff.ai`.
